@@ -97,8 +97,8 @@ function _apigenerations (event)
         event.reply(
           {
             type: 'image',
-            originalContentUrl: response.data[0].url.trimLeft(),
-            previewImageUrl: response.data[0].url.trimLeft()
+            originalContentUrl: response.data.data[0].url.trimLeft(),
+            previewImageUrl: response.data.data[0].url.trimLeft()
           });
          
       }).catch(function (error) {
