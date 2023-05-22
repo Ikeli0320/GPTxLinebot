@@ -5,12 +5,12 @@ const linebot = require('linebot');
 const express = require('express'); 
 const axios = require('axios');   
 //==================================================================
-//                     Key Setting
+//                     Key Setting (統一改用env變數輸入)
 //==================================================================
-//請替換成自己的OPENAI API KEY
+//OPENAI API KEY 
 const apiKey = process.env.OPENAI_Key;  
 
-//請輸入Line Developer Messaging API的ID , Secret ,AccessToken (沒替換會出錯)
+//Line Developer Messaging API的ID , Secret ,AccessToken
 var bot = linebot({
     channelId: process.env.LINE_channelId,
     channelSecret: process.env.LINE_channelSecret,
@@ -80,33 +80,6 @@ function _apicompletions (event)
         console.error('Error calling API:', error);
       });
 }
-
-function _apigenerations (event)
-{
-//   let str = event.message.text.slice(2)+ " 翻譯英文";  //移除請畫
-//   let transresult = "";
-//   //先翻譯
-//   const TransData = {
-//     model: "text-davinci-003",
-//     prompt: str,
-//     max_tokens: 20,
-//     temperature: 0.2,
-//     n: 1,
-//     stop: "\n"
-// }; 
-//   axios.post('https://api.openai.com/v1/completions', TransData, {
-//     headers: {
-//       'Authorization': `Bearer ${apiKey}`,
-//       'Content-Type': 'application/json'
-//     }
-//   }).then(function (response) {
-//     // 处理API响应
-//     p(response.data.choices[0]);
-//     transresult = response.data.choices[0].text.trimLeft().replace(/(\r\n|\n|\r)/gm, " ");
-//   }).catch(function (error) {
-//     // 处理API错误
-//     console.error('Error calling API:', error);
-//   });
 
     const promptstr = event.message.text.slice(2);  //移除請畫
     const requestData = {
